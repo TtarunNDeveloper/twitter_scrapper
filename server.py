@@ -26,7 +26,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 def setup_driver(proxy=None):
-    service = Service(executable_path='/path/to/chromedriver')  # Ensure path is correct
+    chrome_driver_path = "/app/chromedriver"
+    service = Service(executable_path=chrome_driver_path)
     options = Options()
     if proxy:
         options.add_argument(f'--proxy-server={proxy}')
