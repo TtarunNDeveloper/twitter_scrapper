@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.proxy import Proxy, ProxyType
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
@@ -17,8 +17,22 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["twitter_scrapper"]
 collection = db["trending_list"]
 
-def setup_driver():
-    driver = webdriver.Chrome()
+# def setup_driver():
+#     driver = webdriver.Chrome()
+#     return driver
+
+
+def setup_driver(proxy=None):
+    options = Options()
+    if proxy:
+        options.add_argument(f'--proxy-server={proxy}')
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--cache-dir=/tmp")  # Use /tmp directory for cache
+
+    driver = webdriver.Chrome(options=options)
     return driver
 
 def get_random_proxy():
