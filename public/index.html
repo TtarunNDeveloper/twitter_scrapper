@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Trending Topics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #282c34;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #3b3f46;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        main {
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #525760;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #40454d;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .fetch-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 2rem;
+        }
+
+        .fetch-button:hover {
+            background-color: #0056b3;
+        }
+        header img {
+            width: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="twitter.png" alt="X">Trending Topics</h1>
+        </header>
+        <main>
+            <button class="fetch-button" onclick="runScript()">Find Out What's Trending</button>
+            <div id="results"></div>
+        </main>
+ 
+    </div>
+    <script>
+        function runScript() {
+            fetch('/run-script')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('results').innerHTML = data;
+                });
+        }
+    </script>
+</body>
+</html>

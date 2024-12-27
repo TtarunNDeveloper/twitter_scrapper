@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Topics Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #282c34;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #3b3f46;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        main {
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #525760;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #40454d;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        .fetch-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 2rem;
+        }
+
+        .fetch-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Top 5 Trending Topics</h1>
+        </header>
+        <main>
+            <p>The top 5 topics as on {{ datetime }} are:</p>
+            <ul>
+                {% for trend in trends %}
+                    <li>{{ trend }}</li>
+                {% endfor %}
+            </ul>
+            <p>IP address: {{ ip }}.</p>
+            <h2>JSON extract record from the MongoDB:</h2>
+            <pre>{{ json_record }}</pre>
+            <a href="/run-script" class="fetch-button">Run the query again</a>
+        </main>
+    </div>
+</body>
+</html>

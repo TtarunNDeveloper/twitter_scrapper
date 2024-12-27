@@ -1,0 +1,63 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Flask files
+instance/
+*.pyc
+*.pyo
+*.pyd
+
+# Log files and databases
+*.log
+*.sqlite3
+*.db
+*.dat
+*.sql
+*.iml
+
+# MongoDB dumps
+dump/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+
+# Pipenv
+Pipfile.lock
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Vercel files
+.vercel/
+
+# Proxies file
+proxies.txt
