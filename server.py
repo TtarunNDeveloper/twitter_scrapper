@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
@@ -22,7 +21,12 @@ collection = db["trending_list"]
 #     return driver
 
 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
 def setup_driver(proxy=None):
+    service = Service(executable_path='/path/to/chromedriver')  # Ensure path is correct
     options = Options()
     if proxy:
         options.add_argument(f'--proxy-server={proxy}')
@@ -30,10 +34,14 @@ def setup_driver(proxy=None):
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--cache-dir=/tmp")  # Use /tmp directory for cache
 
-    driver = webdriver.Chrome(options=options)
+    # Set cache directory to a writable path
+    options.add_argument("--user-data-dir=/tmp")
+    options.add_argument("--disk-cache-dir=/tmp/cache")
+
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
+
 
 def get_random_proxy():
     with open('proxies.txt', 'r') as f:
