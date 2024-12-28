@@ -1,6 +1,12 @@
 # ProxyMesh Setup
 ProxyMesh IP addresses are manually added to proxies.txt. Ensure you have a valid ProxyMesh account and use the IPs from your ProxyMesh dashboard.
 
+# Run the application
+-Clone the project or download the zip file and extract
+- refer requirments.txt to install packages
+-command : python server.py [in your terminal]
+- activate venv for better results
+
 # Troubleshooting
 If you encounter unusual login challenges from Twitter, try the following:
 -Trying changing the username and password from server.py:

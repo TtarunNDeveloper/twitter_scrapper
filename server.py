@@ -16,32 +16,31 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["twitter_scrapper"]
 collection = db["trending_list"]
 
-# def setup_driver():
-#     driver = webdriver.Chrome()
-#     return driver
-
-
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-
-def setup_driver(proxy=None):
-    chrome_driver_path = "/app/chromedriver"
-    service = Service(executable_path=chrome_driver_path)
-    options = Options()
-    if proxy:
-        options.add_argument(f'--proxy-server={proxy}')
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-
-    # Set cache directory to a writable path
-    options.add_argument("--user-data-dir=/tmp")
-    options.add_argument("--disk-cache-dir=/tmp/cache")
-
-    driver = webdriver.Chrome(service=service, options=options)
+def setup_driver():
+    driver = webdriver.Chrome()
     return driver
+
+
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.chrome.options import Options
+
+# def setup_driver(proxy=None):
+#     chrome_driver_path = "/app/chromedriver"
+#     service = Service(executable_path=chrome_driver_path)
+#     options = Options()
+#     if proxy:
+#         options.add_argument(f'--proxy-server={proxy}')
+#     options.add_argument("--headless")
+#     options.add_argument("--disable-gpu")
+#     options.add_argument("--no-sandbox")
+#     options.add_argument("--disable-dev-shm-usage")
+
+#     options.add_argument("--user-data-dir=/tmp")
+#     options.add_argument("--disk-cache-dir=/tmp/cache")
+
+#     driver = webdriver.Chrome(service=service, options=options)
+#     return driver
 
 
 def get_random_proxy():
