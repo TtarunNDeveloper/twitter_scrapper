@@ -5,7 +5,7 @@ ProxyMesh IP addresses are manually added to proxies.txt. Ensure you have a vali
 -Clone the project or download the zip file and extract
 - refer requirments.txt to install packages
 -command : python server.py [in your terminal]
-- activate venv for better results
+- activate python environment (venv) for better results
 
 # Troubleshooting
 If you encounter unusual login challenges from Twitter, try the following:
